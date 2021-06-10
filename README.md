@@ -1,13 +1,11 @@
 
-<p align="left">
-  <img src="https://img.shields.io/github/license/clastix/kubectl"/>
-  <a href="https://github.com/clastix/kubectl/releases">
-    <img src="https://img.shields.io/github/v/release/clastix/kubectl"/>
-  </a>
-</p>
-
 <p align="center">
   <img src="assets/logo/kubexarm.png" />
+</p>
+
+<p align="left">
+  <img alt="GitHub tag (latest SemVer)" src="https://img.shields.io/github/v/tag/clastix/kubectl?sort=semver">
+  <img src="https://img.shields.io/github/license/clastix/kubectl"/>
 </p>
 
 ---
@@ -30,7 +28,13 @@ New stable versions will be built and pushed automatically by *GitHub action* [w
 
 | kubectl | amd64 | arm64 | armv7 |
 | :---: | :---: | :---: | :---: |
+|v1.21.1| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.20.7| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.20.0| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.19.4| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.18.8| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.17.11| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.16.15| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 Keep watching our [quay.io](https://quay.io/repository/clastix/kubectl) repository for the latest updates!
 
