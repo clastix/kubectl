@@ -28,9 +28,9 @@ New stable versions will be built and pushed automatically by *GitHub action* [w
 
 | kubectl | amd64 | arm64 | armv7 |
 | :---: | :---: | :---: | :---: |
+|v1.22.2| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.21.1| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.20.7| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-|v1.20.0| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.19.4| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.18.8| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.17.11| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -103,10 +103,9 @@ finally, if no tag comes out, it will use "stable" binary.
 
 ### Launch a container
 
-```
-$ docker run --name kubectl quay.io/clastix/kubectl:v1.20.7 kubectl version --client
+$ docker run --name kubectl quay.io/clastix/kubectl:v1.22.2 version
 
-Client Version: version.Info{Major:"1", Minor:"20", GitVersion:"v1.20.7", GitCommit:"132a687512d7fb058d0f5890f07d4121b3f0a2e2", GitTreeState:"clean", BuildDate:"2021-05-12T12:40:09Z", GoVersion:"go1.15.12", Compiler:"gc", Platform:"linux/amd64"}
+Client Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.2", GitCommit:"8b5a19147530eaac9476b0ab82980b4088bbc1b2", GitTreeState:"clean", BuildDate:"2021-09-15T21:38:50Z", GoVersion:"go1.16.8", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
 you can also use your own _kubeconfig_
