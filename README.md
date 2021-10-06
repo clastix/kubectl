@@ -84,25 +84,25 @@ OR
 
 running :
 
-```
-$ docker build . -t foo.io/bar/kubectl:<desired_version> --build-arg KUBECTL_VERSION=<desired_version>
+```bash
+$ docker build . -t foo.io/bar/kubectl:<desired_version> --build-arg KUBECTL_VERSION=<desired_version> --build-arg TARGETARCH=<target_architecture>
 ```
 
 or using **make** utility :
 ```
 $ make docker-build
 ```
-**N.B.** remember to export desired kubectl version as follow :
+**N.B.** if you like, you can choose desired kubectl version and target architecture as follow :
 
 ```
 $ export KUBECTL_VERSION=<desired_version>
+$ export TARGETARCH=<target_architecture>
 ```
-
-otherwise, Makefile will retrieve the last tag from branch commit sha;
-finally, if no tag comes out, it will use "stable" binary.
+otherwise, Makefile will automatically retrieve its default values.
 
 ### Launch a container
 
+```bash
 $ docker run --name kubectl quay.io/clastix/kubectl:v1.22.2 version
 
 Client Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.2", GitCommit:"8b5a19147530eaac9476b0ab82980b4088bbc1b2", GitTreeState:"clean", BuildDate:"2021-09-15T21:38:50Z", GoVersion:"go1.16.8", Compiler:"gc", Platform:"linux/amd64"}
