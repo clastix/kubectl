@@ -46,7 +46,7 @@ Keep watching our [quay.io](https://quay.io/repository/clastix/kubectl) reposito
 
 Make sure you have a containerization software (e.g. _[Docker](https://www.docker.com/)_ ) installed on your device :
 
-```
+```bash
 $ docker version
 
 Client: Docker Engine - Community
@@ -66,16 +66,8 @@ Client: Docker Engine - Community
 
 Just pull the desired version from [quay.io](https://quay.io/repository/clastix/kubectl) :
 
-```
-$ docker pull quay.io/clastix/kubectl:v1.20.7
-
-v1.20.7: Pulling from clastix/kubectl
-540db60ca938: Already exists 
-9f38dcb1a41d: Already exists 
-71cd9ea851af: Already exists 
-Digest: sha256:513848b048dcb2194f1896f56c7a8f6e4a2db8c33b52958a73a09012a1b1a12c
-Status: Downloaded newer image for quay.io/clastix/kubectl:v1.20.7
-quay.io/clastix/kubectl:v1.20.7
+```bash
+$ docker pull quay.io/clastix/kubectl:<desired_version>
 ```
 
 OR
@@ -89,12 +81,12 @@ $ docker build . -t foo.io/bar/kubectl:<desired_version> --build-arg KUBECTL_VER
 ```
 
 or using **make** utility :
-```
+```bash
 $ make docker-build
 ```
 **N.B.** if you like, you can choose desired kubectl version and target architecture as follow :
 
-```
+```bash
 $ export KUBECTL_VERSION=<desired_version>
 $ export TARGETARCH=<target_architecture>
 ```
@@ -106,20 +98,21 @@ otherwise, Makefile will automatically retrieve its default values.
 $ docker run --name kubectl quay.io/clastix/kubectl:v1.22.2 version
 
 Client Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.2", GitCommit:"8b5a19147530eaac9476b0ab82980b4088bbc1b2", GitTreeState:"clean", BuildDate:"2021-09-15T21:38:50Z", GoVersion:"go1.16.8", Compiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.5", GitCommit:"aea7bbadd2fc0cd689de94a54e5b7b758869d691", GitTreeState:"clean", BuildDate:"2021-09-15T21:04:16Z", GoVersion:"go1.16.8", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
 you can also use your own _kubeconfig_
 
-```
-$ docker run --name kubectl -v ~/.kube/config:/home/nonroot/.kube/config quay.io/clastix/kubectl:v1.20.7 kubectl get nodes
+```bash
+$ docker run --name kubectl -v ~/.kube/config:/home/nonroot/.kube/config quay.io/clastix/kubectl:<desired_version> get nodes
 
-NAME       STATUS   ROLES                  AGE   VERSION
-master01   Ready    control-plane,master   21d   v1.20.7
-master02   Ready    control-plane,master   21d   v1.20.7
-master03   Ready    control-plane,master   21d   v1.20.7
-worker01   Ready    worker                 21d   v1.20.7
-worker02   Ready    worker                 21d   v1.20.7
-[...]
+NAME              STATUS   ROLES                  AGE   VERSION
+controlplane-00   Ready    control-plane,master   13d   v1.21.5
+controlplane-01   Ready    control-plane,master   13d   v1.21.5
+controlplane-02   Ready    control-plane,master   13d   v1.21.5
+worker-00         Ready    <none>                 13d   v1.21.5
+worker-01         Ready    <none>                 13d   v1.21.5
+worker-02         Ready    <none>                 13d   v1.21.5
 ```
 
 ### Removal
@@ -127,14 +120,14 @@ To clean up, just :
 
 1. Remove your kubectl container :
 
-    ```
+    ```bash
     $ docker rm kubectl
     ```
 
 3. Remove your kubectl image :
 
-    ```
-    $ docker rmi -f quay.io/clastix/kubectl:v1.20.7
+    ```bash
+    $ docker rmi -f quay.io/clastix/kubectl:<desired_version>
     ```
 
 ## FAQ
