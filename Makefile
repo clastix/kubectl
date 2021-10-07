@@ -34,3 +34,9 @@ docker-buildx-push:
 # Check multiarch docker image manifest
 docker-check-manifest:
 	docker manifest inspect ${IMG}
+
+docker-trivy-scan:
+	docker run --rm -v trivy-cache:/root/.cache/ \
+					-v /var/run/docker.sock:/var/run/docker.sock \
+					aquasec/trivy:latest \
+					${IMG}
