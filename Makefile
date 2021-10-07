@@ -1,6 +1,10 @@
+# Image URL to use while building/pushing image targets
+IMG ?= quay.io/clastix/kubectl:${KUBECTL_VERSION}
+
 # Choose kubectl version from commit sha related tag
 # if no tag comes out, it will use "stable" binary
-KUBECTL_VERSION ?= $$(git describe --abbrev=0 --tags || curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
+KUBECTL_URL ?= https://storage.googleapis.com/kubernetes-release/release/stable.txt
+KUBECTL_VERSION ?= $$(git describe --abbrev=0 --tags || curl -s ${KUBECTL_URL})
 
 # Extract CPU architecture 
 TARGETARCH ?= $(shell case "$$(uname -m)" in (x86_64) echo "amd64";; \
@@ -20,12 +24,13 @@ docker-build:
 docker-push:
 	docker push ${IMG}
 
-# Build multiarch docker image with "docker buildx" and push it
+# Build multi-platform docker image and push it
+# QEMU and binfmt-support pkgs are required
 docker-buildx-push:
 	docker buildx build . -t ${IMG} --build-arg KUBECTL_VERSION=${KUBECTL_VERSION} \
 								--platform ${PLATFORMS} \
 								--push
 
-# Check docker image manifest
+# Check multiarch docker image manifest
 docker-check-manifest:
 	docker manifest inspect ${IMG}
