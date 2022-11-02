@@ -1,0 +1,20 @@
+# Download-STAGE
+FROM alpine:3.16.2 as downloader
+
+ARG KUBECTL_VERSION
+ARG TARGETARCH
+
+RUN echo -e "-----------------\nKubectl: ${KUBECTL_VERSION}\nArch: ${TARGETARCH}\n-----------------\n"
+RUN apk add --no-cache -U -u \
+            ca-certificates \
+            curl
+RUN curl -L -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/${TARGETARCH}/kubectl && \
+    chmod +x /usr/local/bin/kubectl
+
+# Run-STAGE
+FROM gcr.io/distroless/static-debian11:nonroot
+
+WORKDIR /
+COPY --from=downloader /usr/local/bin/kubectl .
+
+ENTRYPOINT ["/kubectl"]
