@@ -38,5 +38,5 @@ docker-check-manifest:
 docker-trivy-scan:
 	docker run --rm -v trivy-cache:/root/.cache/ \
 					-v /var/run/docker.sock:/var/run/docker.sock \
-					aquasec/trivy:latest \
-					${IMG}
+					aquasec/trivy:0.34.0 \
+					image ${IMG}
