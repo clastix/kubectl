@@ -28,6 +28,11 @@ New stable versions will be built and pushed automatically by *GitHub action* [w
 
 | kubectl | amd64 | arm64 | armv7 |
 | :---: | :---: | :---: | :---: |
+|v1.32.0| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.31.0| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.30.1| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.29.1| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.28.2| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.27.2| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.26.4| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.25.4| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -41,7 +46,7 @@ New stable versions will be built and pushed automatically by *GitHub action* [w
 |v1.17.17| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.16.15| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
-Keep watching our [quay.io](https://quay.io/repository/clastix/kubectl) repository for the latest updates!
+Keep watching our [docker.io](https://hub.docker.com/r/clastix/kubectl) and [quay.io](https://quay.io/repository/clastix/kubectl) repositories for the latest updates!
 
 ---
 
@@ -69,10 +74,10 @@ Client: Docker Engine - Community
 
 ### Take our image
 
-Just pull the desired version from [quay.io](https://quay.io/repository/clastix/kubectl) :
+Just pull the desired version from [docker.io](https://hub.docker.com/r/clastix/kubectl) or [quay.io](https://quay.io/repository/clastix/kubectl) :
 
 ```bash
-$ docker pull quay.io/clastix/kubectl:<desired_version>
+$ docker pull clastix/kubectl:<desired_version>
 ```
 
 OR
@@ -100,16 +105,15 @@ otherwise, Makefile will automatically retrieve its default values.
 ### Launch a container
 
 ```bash
-$ docker run --name kubectl quay.io/clastix/kubectl:v1.22.2 version
+$ docker run --name kubectl clastix/kubectl:v1.22.2 version --client
 
 Client Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.2", GitCommit:"8b5a19147530eaac9476b0ab82980b4088bbc1b2", GitTreeState:"clean", BuildDate:"2021-09-15T21:38:50Z", GoVersion:"go1.16.8", Compiler:"gc", Platform:"linux/amd64"}
-Server Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.5", GitCommit:"aea7bbadd2fc0cd689de94a54e5b7b758869d691", GitTreeState:"clean", BuildDate:"2021-09-15T21:04:16Z", GoVersion:"go1.16.8", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
 you can also use your own _kubeconfig_
 
 ```bash
-$ docker run --name kubectl -v ~/.kube/config:/home/nonroot/.kube/config quay.io/clastix/kubectl:<desired_version> get nodes
+$ docker run --name kubectl -v ~/.kube/config:/home/nonroot/.kube/config clastix/kubectl:<desired_version> get nodes
 
 NAME              STATUS   ROLES                  AGE   VERSION
 controlplane-00   Ready    control-plane,master   13d   v1.21.5
@@ -132,7 +136,7 @@ To clean up, just :
 3. Remove your kubectl image :
 
     ```bash
-    $ docker rmi -f quay.io/clastix/kubectl:<desired_version>
+    $ docker rmi -f clastix/kubectl:<desired_version>
     ```
 
 ## FAQ
