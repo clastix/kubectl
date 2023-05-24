@@ -28,6 +28,11 @@ New stable versions will be built and pushed automatically by *GitHub action* [w
 
 | kubectl | amd64 | arm64 | armv7 |
 | :---: | :---: | :---: | :---: |
+|v1.27.2| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.26.4| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.25.4| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.24.1| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|v1.23.1| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.22.2| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.21.5| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 |v1.20.11| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
