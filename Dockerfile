@@ -7,7 +7,7 @@ RUN echo -e "-----------------\nKubectl: ${KUBECTL_VERSION}\nArch: ${TARGETARCH}
 RUN apk add --no-cache -U -u \
             ca-certificates \
             curl
-RUN curl -L -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/${TARGETARCH}/kubectl && \
+RUN curl -L -o /usr/local/bin/kubectl https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${TARGETARCH}/kubectl && \
     chmod +x /usr/local/bin/kubectl
 RUN addgroup -g 1000 -S nonroot && \
     adduser -u 1000 -D -S -G nonroot nonroot
