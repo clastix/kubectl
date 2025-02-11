@@ -6,7 +6,7 @@ IMG ?= quay.io/clastix/kubectl:${KUBECTL_VERSION}
 KUBECTL_URL ?= https://storage.googleapis.com/kubernetes-release/release/stable.txt
 KUBECTL_VERSION ?= $$(git describe --abbrev=0 --tags || curl -s ${KUBECTL_URL})
 
-# Extract CPU architecture 
+# Extract CPU architecture
 TARGETARCH ?= $(shell case "$$(uname -m)" in (x86_64) echo "amd64";; \
 											 (aarch64) echo "arm64";; \
 											 (armhf|armv7*) echo "arm";; \
@@ -38,5 +38,5 @@ docker-check-manifest:
 docker-trivy-scan:
 	docker run --rm -v trivy-cache:/root/.cache/ \
 					-v /var/run/docker.sock:/var/run/docker.sock \
-					aquasec/trivy:0.34.0 \
+					aquasec/trivy:0.59.1 \
 					image ${IMG}
