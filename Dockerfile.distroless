@@ -1,5 +1,5 @@
 # Download-STAGE
-FROM alpine:3.21.2 as downloader
+FROM alpine:3.21.2 AS downloader
 
 ARG KUBECTL_VERSION
 ARG TARGETARCH
