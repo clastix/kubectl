@@ -1,5 +1,5 @@
 # Download-STAGE
-FROM alpine:3.16.2 as downloader
+FROM alpine:3.21.2 AS downloader
 
 ARG KUBECTL_VERSION
 ARG TARGETARCH
@@ -12,7 +12,7 @@ RUN curl -L -o /usr/local/bin/kubectl https://dl.k8s.io/release/${KUBECTL_VERSIO
     chmod +x /usr/local/bin/kubectl
 
 # Run-STAGE
-FROM gcr.io/distroless/static-debian11:nonroot
+FROM gcr.io/distroless/static-debian12:nonroot
 
 WORKDIR /
 COPY --from=downloader /usr/local/bin/kubectl .
