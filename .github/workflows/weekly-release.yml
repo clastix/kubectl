@@ -27,7 +27,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
-          git config user.name "Dario Tranchitella"
-          git config user.email "dario@tranchitella.eu"
+          git config user.name "Github Actions"
+          git config user.email 'github-actions@users.noreply.github.com'
           git tag -a "${{ steps.remote.outputs.version }}" -m "New release"
           git push origin "${{ steps.remote.outputs.version }}"
