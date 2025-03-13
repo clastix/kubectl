@@ -27,7 +27,7 @@ jobs:
       - name: Create new tag
         if: steps.repository.outputs.version != steps.remote.outputs.version
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
         shell: bash
         run: |
           git config user.name "Github Actions"
