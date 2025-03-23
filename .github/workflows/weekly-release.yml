@@ -24,8 +24,13 @@ jobs:
         id: remote
         run: echo "version=$(curl https://cdn.dl.k8s.io/release/stable.txt)" >> $GITHUB_OUTPUT
 
+      - name: Debug outputs
+        run: |
+          echo "Repository version: ${{ steps.repository.outputs.version }}"
+          echo "Remote version: ${{ steps.remote.outputs.version }}"
+
       - name: Create new tag
-        if: steps.repository.outputs.version != steps.remote.outputs.version
+        if: ${{ steps.repository.outputs.version != steps.remote.outputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
         shell: bash
