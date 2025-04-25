@@ -1,9 +1,9 @@
-name: Weekly check
+name: Daily check
 
 on:
   schedule:
-    # Every Monday at 9AM
-    - cron: '0 9 * * 1'
+    # Every Day at 10AM
+    - cron: '0 10 * * *'
 jobs:
   check-kubectl-new-version:
     runs-on: ubuntu-latest
