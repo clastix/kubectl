@@ -19,7 +19,6 @@ jobs:
           # Fine-grained PAT with contents:write and workflows:write
           # scopes
           token: ${{ secrets.WORKFLOW_TOKEN }}
-  
       - name: Get latest tag from the repository
         id: repository
         run: echo "version=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
