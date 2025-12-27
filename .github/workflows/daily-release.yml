@@ -1,6 +1,7 @@
 name: Daily check
 
 on:
+  workflow_dispatch:
   schedule:
     # Every Day at 10AM
     - cron: '0 10 * * *'
