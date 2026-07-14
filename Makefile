@@ -3,12 +3,12 @@ IMG ?= quay.io/clastix/kubectl:${KUBECTL_VERSION}
 
 # Choose kubectl version from commit sha related tag
 # if no tag comes out, it will use "stable" binary
-KUBECTL_URL ?= https://storage.googleapis.com/kubernetes-release/release/stable.txt
+KUBECTL_URL ?= https://dl.k8s.io/release/stable.txt
 KUBECTL_VERSION ?= $$(git describe --abbrev=0 --tags || curl -s ${KUBECTL_URL})
 
 # Extract CPU architecture
 TARGETARCH ?= $(shell case "$$(uname -m)" in (x86_64) echo "amd64";; \
-											 (aarch64) echo "arm64";; \
+											 (aarch64|arm64) echo "arm64";; \
 											 (armhf|armv7*) echo "arm";; \
 											 esac;)
 
@@ -38,5 +38,5 @@ docker-check-manifest:
 docker-trivy-scan:
 	docker run --rm -v trivy-cache:/root/.cache/ \
 					-v /var/run/docker.sock:/var/run/docker.sock \
-					aquasec/trivy:0.59.1 \
+					aquasec/trivy:0.72.0 \
 					image ${IMG}
