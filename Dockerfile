@@ -1,4 +1,4 @@
-FROM alpine:3.21.2
+FROM alpine:3.24 AS downloader
 
 ARG KUBECTL_VERSION
 ARG TARGETARCH
