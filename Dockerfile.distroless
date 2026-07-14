@@ -12,7 +12,7 @@ RUN curl -L -o /usr/local/bin/kubectl https://dl.k8s.io/release/${KUBECTL_VERSIO
     chmod +x /usr/local/bin/kubectl
 
 # Run-STAGE
-FROM gcr.io/distroless/static-debian12:nonroot
+FROM gcr.io/distroless/static-debian13:nonroot
 
 WORKDIR /
 COPY --from=downloader /usr/local/bin/kubectl .
